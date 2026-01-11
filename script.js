@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+
+    if (menuToggle && navUl) {
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
+    }
+
     // Background animation with math symbols
     const animationContainer = document.getElementById('background-animation');
     if (animationContainer) {
@@ -53,15 +62,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = this.elements['email'].value;
         const subject = this.elements['subject'].value;
         const message = this.elements['message'].value;
-        
-        const mailtoLink = `mailto:ajuakarjun@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}
-Email: ${email}
 
-Message:
-${message}`)}`;
-        
-        window.location.href = mailtoLink;
-        this.reset();
+        const formData = { name, email, subject, message };
+
+        fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+            this.reset();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Failed to send message. Please try again later.');
+        });
     });
 
     // Star rating

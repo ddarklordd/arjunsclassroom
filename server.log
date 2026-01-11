@@ -1,0 +1,27 @@
+API key does not start with "SG.".
+Server listening at http://localhost:3000
+Error sending email: ResponseError: Unauthorized
+    at node_modules/@sendgrid/client/src/classes/client.js:167:29
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  code: 401,
+  response: {
+    headers: Object [AxiosHeaders] {
+      server: 'nginx',
+      date: 'Sun, 11 Jan 2026 11:48:42 GMT',
+      'content-type': 'application/json',
+      'content-length': '116',
+      connection: 'keep-alive',
+      'access-control-allow-origin': 'https://sendgrid.api-docs.io',
+      'access-control-allow-methods': 'POST',
+      'access-control-allow-headers': 'Authorization, Content-Type, On-behalf-of, x-sg-elas-acl',
+      'access-control-max-age': '600',
+      'x-no-cors-reason': 'https://sendgrid.com/docs/Classroom/Basics/API/cors.html',
+      'strict-transport-security': 'max-age=31536000; includeSubDomains',
+      'content-security-policy': "frame-ancestors 'none'",
+      'cache-control': 'no-cache',
+      'x-content-type-options': 'no-sniff',
+      'referrer-policy': 'strict-origin-when-cross-origin'
+    },
+    body: { errors: [Array] }
+  }
+}

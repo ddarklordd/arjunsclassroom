@@ -18,6 +18,11 @@ body {
     scroll-behavior: smooth;
     background-color: var(--background-color);
     color: var(--text-color);
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 header {
@@ -39,6 +44,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -80,6 +86,13 @@ nav a:hover {
     color: var(--primary-color);
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
 section {
     padding: 4rem 2rem;
     text-align: center;
@@ -109,21 +122,22 @@ section {
 .hero {
     z-index: 2;
     text-align: center;
+    padding: 0 1rem;
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 2rem;
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 3rem;
     color: var(--heading-color);
@@ -147,6 +161,7 @@ h2 {
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 10px 30px var(--shadow-color);
+    flex-shrink: 0;
 }
 
 .profile-pic {
@@ -164,7 +179,7 @@ h2 {
 
 .philosophy {
     font-style: italic;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--primary-color);
     margin-top: 2rem;
 }
@@ -183,7 +198,7 @@ h2 {
 
 .service-package {
     background-color: var(--white-color);
-    padding: 3rem;
+    padding: 2.5rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px var(--shadow-color);
     width: 320px;
@@ -197,13 +212,13 @@ h2 {
 }
 
 .service-package h3 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
 }
 
 .price {
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 700;
     color: var(--heading-color);
     margin-bottom: 2rem;
@@ -213,11 +228,21 @@ h2 {
     list-style: none;
     padding: 0;
     margin: 0 0 2rem 0;
+    text-align: left;
 }
 
 .service-package ul li {
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.service-package ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
 }
 
 .boards {
@@ -254,7 +279,6 @@ h2 {
 
 #reviews {
     background-color: var(--background-color);
-    text-align: center;
 }
 
 #reviews-container {
@@ -276,27 +300,30 @@ h2 {
 .review .rating {
     color: #f1c40f;
     font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .review p {
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .review .student-name {
     font-weight: bold;
     text-align: right;
     color: var(--primary-color);
+    margin-top: 1rem;
 }
 
 #add-review {
     background-color: var(--white-color);
-    text-align: center;
 }
 
 #review-form {
     max-width: 600px;
     margin: 0 auto;
+    text-align: left;
 }
 
 #review-form input,
@@ -320,6 +347,7 @@ h2 {
 
 .rating {
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .star {
@@ -345,6 +373,7 @@ h2 {
     font-size: 1.2rem;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 5px 15px rgba(58, 123, 213, 0.4);
+    width: 100%;
 }
 
 #review-form button:hover {
@@ -367,13 +396,13 @@ h2 {
 }
 
 .contact-info h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--heading-color);
     margin-bottom: 1.5rem;
 }
 
 .contact-info p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 2rem;
 }
@@ -391,7 +420,7 @@ h2 {
 }
 
 .info-item a {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s;
@@ -445,7 +474,6 @@ h2 {
     box-shadow: 0 10px 20px rgba(58, 123, 213, 0.6);
 }
 
-
 footer {
     background-color: var(--heading-color);
     color: var(--white-color);
@@ -460,4 +488,160 @@ footer a {
 
 .animate__animated.animate__fadeInUp {
     --animate-duration: 1s;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    #about .about-container {
+        flex-direction: column;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: left;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 70px;
+    }
+
+    body {
+        padding-top: var(--header-height);
+    }
+
+    header {
+        padding: 0 1.5rem;
+    }
+
+    nav ul {
+        display: block;
+        flex-direction: column;
+        position: absolute;
+        top: calc(var(--header-height) - 20px);
+        right: 0;
+        width: auto;
+        min-width: 200px;
+        background-color: var(--white-color);
+        box-shadow: 0 5px 15px var(--shadow-color);
+        padding: 1rem;
+        border-radius: 8px;
+        transform: scaleY(0);
+        transform-origin: top right;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    nav ul.active {
+        transform: scaleY(1);
+    }
+
+    nav ul li {
+        margin: 0;
+        text-align: left;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 0.8rem 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .logo img {
+        max-height: 40px;
+    }
+
+    .logo span {
+        font-size: 1.4rem;
+    }
+
+    section {
+        padding: 3rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    .profile-pic-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .service-grid,
+    #reviews-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .service-package,
+    .review {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .contact-form form {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 2.5rem 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .profile-pic-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+    }
+
+    .service-package {
+        padding: 2rem;
+    }
+
+    .price {
+        font-size: 2.5rem;
+    }
+
+    .contact-form form {
+        padding: 1.5rem;
+    }
 }

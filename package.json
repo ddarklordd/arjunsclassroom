@@ -1,0 +1,27 @@
+{
+  "name": "arjunsclassroom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddarklordd/arjunsclassroom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ddarklordd/arjunsclassroom/issues"
+  },
+  "homepage": "https://github.com/ddarklordd/arjunsclassroom#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.6",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "nodemailer": "^7.0.12"
+  }
+}
